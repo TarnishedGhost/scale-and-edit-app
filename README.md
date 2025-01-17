@@ -1,4 +1,4 @@
-# 🖼️ Онлайн-редактор зображень
+# 🖼️ Scale & Edit App Онлайн-редактор зображень
 
 ![Project Logo](https://github.com/TarnishedGhost/scale-and-edit-app/blob/main/screenshots/logo.png)
 
