@@ -1,0 +1,162 @@
+<%- include ("./partials/head") %>
+<body>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		#previewImage {
+			max-width: 250px;
+			max-height: 250px;
+			margin-top: 10px;
+		}
+		#processedImage {
+			max-width: 300px;
+			max-height: 300px;
+		}
+	</style>
+	<main class="container editor">
+		<%- include ("./partials/header") %>
+	<div class="wrapper">
+		<header class="index-header">
+			<h1><%= __('editor.title') %></h1>
+		</header>
+		
+		<section class="editor">
+
+	<h3><%= __('editor.upload_image') %></h3>
+	<form id="uploadForm" enctype="multipart/form-data">
+		<input type="file" id="imageFile" name="imageFile" accept="image/*" required />
+		<button type="button" id="uploadButton"><%= __('editor.upload') %></button><br><br>
+		<div id="previewSection">
+			<h4><%= __('editor.preview') %>:</h4>
+			<img id="previewImage" src="" alt="Preview Image" style="display: none;" />
+		</div><br><br>
+	</form><br>
+
+	<h3><%= __('editor.options') %>:</h3>
+	<p><label for="resizeWidth"><%= __('editor.resize_width') %>:</label>
+		<input type="number" id="resizeWidth" name="resizeWidth" placeholder="Width (px)" /><br>
+	</p>
+	<p><label for="resizeHeight"><%= __('editor.resize_height') %>:</label>
+		<input type="number" id="resizeHeight" name="resizeHeight" placeholder="Height (px)" /><br>
+	</p>
+	<p><label>
+			<input type="checkbox" id="sharpen" name="sharpen" value="true" />
+			<%= __('editor.sharpen') %>
+		</label>
+	<label>
+			<input type="checkbox" id="sepia" name="sepia" value="true" />
+			<%= __('editor.sepia') %>
+		</label>
+	</p>
+	<button type="button" id="processButton"><%= __('editor.process') %></button>
+
+	<div id="resultSection" style="display: none;">
+		<h3><%= __('editor.processed_image') %>:</h3>
+		<img id="processedImage" alt="Processed Image" />
+		<button type="button" id="saveButton"><%= __('editor.save_processed_image') %></button>
+	</div>
+
+	<script>
+		const uploadUrl = 'http://localhost:3000/image/upload';
+		const processUrl = 'http://localhost:3000/image/process';
+		const saveUrl = 'http://localhost:3000/user/save-processed-image';
+
+		let uploadedImageId = null;
+
+		$('#uploadButton').click(function () {
+			const formData = new FormData();
+			const fileInput = $('#imageFile')[0].files[0];
+
+			if (!fileInput) {
+				alert('Please select an image to upload.');
+				return;
+			}
+
+			formData.append('imageFile', fileInput);
+
+			$.ajax({
+				url: uploadUrl,
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function (response) {
+					uploadedImageId = response.previewUrl; // response.imageId
+					$('#previewImage')
+						.attr('src', '/uploads/' + response.previewUrl)
+						.show();
+					alert('Image uploaded successfully.');
+				},
+				error: function () {
+					alert('Failed to upload image.');
+				}
+			});
+		});
+
+		$('#processButton').click(function () {
+			if (!uploadedImageId) {
+				alert('Please upload an image first.');
+				return;
+			}
+
+			const data = {
+				imageId: uploadedImageId,
+				resizeWidth: $('#resizeWidth').val(),
+				resizeHeight: $('#resizeHeight').val(),
+				sharpen: $('#sharpen').is(':checked'),
+				sepia: $('#sepia').is(':checked'),
+			};
+
+			$.ajax({
+				url: processUrl,
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				success: function (response) {
+					//$('#resultSection').show();
+					//$('#processedImage').attr('src', response.processedImageUrl);
+					$('#previewImage')
+						.attr('src', '/uploads/' + response.previewUrl)
+						.show();
+					$('#previewImage').attr('src', response.processedImageUrl);
+					alert('Image processed successfully.');
+				},
+				error: function () {
+					alert('Failed to process image.');
+				}
+			});
+		});
+
+		$('#saveButton').click(function () {
+			if (!uploadedImageId) {
+				alert('No processed image to save.');
+				return;
+			}
+
+			const data = {
+				imageId: uploadedImageId,
+			};
+
+			$.ajax({
+				url: saveUrl,
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				success: function () {
+					alert('Processed image saved successfully.');
+				},
+				error: function () {
+					alert('Failed to save processed image.');
+				}
+			});
+		});
+	</script>
+
+			
+		<section>
+	</div>
+	</main>
+	
+	<%- include ("./partials/footer.ejs") %>
+	
+</body>
+</html>

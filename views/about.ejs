@@ -1,0 +1,23 @@
+<%- include ("./partials/head") %>
+<body>
+
+  <main class="container about">
+    <%- include ("./partials/header") %>
+	<div class="wrapper about">
+		<h1><%= __('about.title') %></h1>
+		
+		<div class="about-img">
+			<img src="/img/logo.png" alt="banner">
+		</div>
+		
+		<p class="center"><%= __('about.block_1') %></p>
+
+	</div>
+	<section>
+		<div id="social-buttons" class="social-buttons"></div>
+	</section>
+  </main>
+  <%- include ("./partials/footer.ejs") %>
+  
+</body>
+</html>

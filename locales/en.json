@@ -1,0 +1,58 @@
+{
+	"header": {
+		"title": "Scale & Edit App",
+		"title_editor": "Редактор зображень",
+		"home": "Home",
+		"about": "About",
+		"my_account": "My account",
+		"image_editor": "Image editor",
+		"login": "Login",
+		"register": "Register"
+	},
+	"editor": {
+		"upload_image": "Upload Image:",
+		"upload": "Upload",
+		"preview": "Preview :",
+		"options": "Options :",
+		"resize_width": "Resize Width:",
+		"resize_height": "Resize Height:",
+		"sharpen": "Sharpen",
+		"sepia": "Sepia",
+		"title": "Editor",
+		"processed_image": "Processed Image",
+		"save_processed_image": "Save Processed Image",
+		"process": "Process"
+	},
+	"footer": {
+		"home": "Contact Us",
+		"about": "About",
+		"my_account": "Privacy Policy"
+	},
+	"home": {
+		"title": "Scale & Edit App",
+		"subtitle": "Create, edit, and share your images with ease! Professional tools – in your browser.",
+		"block_1": "Scale images with maximum precision. Adjust dimensions for any project, whether it's web design or print",
+		"block_2": "Add stylish filters and effects to turn an ordinary photo into a work of art. Simple interface, stunning results.",
+		"block_3": "Edit images with advanced tools: crop, adjust brightness, saturation, and more.",
+		"block_4": "Share finished images with friends and colleagues. Quick integration with social networks and messengers.",
+		"block_5": "Upload images anytime, supporting various formats and sizes. Fast, convenient, and without unnecessary steps"
+	},
+	"about": {
+		"title": "About this Project",
+		"subtitle": "Про проект",
+		"block_1": "An intuitive and functional online image editor that allows users to quickly make changes to uploaded images directly in the browser. Adding tags to organize the distribution and search for images by tags."
+	},
+	"login": {
+		"title": "Log in",
+		"email": "Email:",
+		"password": "Password:",
+		"income": "Log in"
+	},
+	"register": {
+		"title": "Registration",
+		"name": "Name:",
+		"email": "Email:",
+		"password": "Password:",
+		"income": "Register"
+	}
+}

@@ -1,0 +1,81 @@
+<%-	include	("./partials/head")	%>
+	<body>
+			
+		<main class="container index">
+		
+			<%- include ("./partials/header") %>
+			
+			<div class="wrapper">
+			
+				<header class="index-header">
+					<h1><%= __('home.title') %></h1>
+				</header>
+					
+				<section>
+					<div id="social-buttons" class="social-buttons"></div>
+				</section>
+				
+				<div class="subtitle">
+					<h2><%= __('home.subtitle') %></h2>
+				</div>
+				
+				<div class="home-body">
+				
+					<section>
+						<header class="index_header">
+							<h3>Upload images</h3>
+						</header>
+							<p>
+							<%= __('home.block_5') %>
+							</p>
+						</header>
+						
+					</section>
+					
+					<section>
+						<header class="index_header">
+							<h3>Scale images</h3>
+						</header>
+						<p>
+							<%= __('home.block_1') %>
+							</p>
+					</section>
+					
+					<section>
+						<header class="index_header">
+							<h3>Add effects</h3>
+						</header>
+							<p>
+							<%= __('home.block_2') %>
+							</p>
+					</section>
+					
+					<section>
+						<header class="index_header">
+							<h3>Edit images</h3>
+						</header>
+							<p>
+							<%= __('home.block_3') %>
+							</p>
+					</section>	
+					
+					<section>
+						<header class="index_header">
+							<h3>Share for your frends</h3>
+						</header>
+							<p>
+							<%= __('home.block_4') %>
+							</p>
+					</section>
+					
+				</div>
+				
+				
+			</div>
+		
+		</main>
+		
+		<%-	include	("./partials/footer.ejs") %>
+			
+	</body>
+</html>

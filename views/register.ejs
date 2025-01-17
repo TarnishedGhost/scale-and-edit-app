@@ -1,0 +1,23 @@
+<%- include ("./partials/head") %>
+<body>
+  
+  <main class="container register">
+	<%- include ("./partials/header") %>
+	<div class="wrapper">
+	 <h1><%= __('register.title') %></h1>
+	 <form action="/auth/register" method="POST">
+	 <label for="name"><%= __('register.name') %></label>
+	 <input type="text" id="name" name="name" required />
+	 <label for="email"><%= __('register.email') %></label>
+	 <input type="email" id="email" name="email" required />
+	 <label for="password"><%= __('register.password') %></label>
+	 <input type="password" id="password" name="password" required />
+	 <button type="submit"><%= __('register.income') %></button>
+	 </form>
+	</div>
+ </main>
+  
+  <%- include ("./partials/footer.ejs") %>
+  
+</body>
+</html>
