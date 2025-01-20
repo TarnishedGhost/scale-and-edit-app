@@ -7,7 +7,8 @@
   "scripts": {
     "test": "zoom",
     "format:check": "npx prettier --check \"**/*.{js,json,css,html}\"",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "prepare": "husky"
   },
   "author": "Bilyi Bohdan",
   "license": "ISC",
