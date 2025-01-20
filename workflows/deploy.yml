@@ -1,0 +1,22 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Start application
+        run: node index.js
+      - name: Deploy to Render
+        uses: Render-dev/render-action@v1
+        with:
+          token: ${{ secrets.RENDER_TOKEN }}
+          version: ${GITHUB_SHA}
+          env: NODE_ENV=production
+          project_id: ${{ secrets.RENDER_PROJECT_ID }}
